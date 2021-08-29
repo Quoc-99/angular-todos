@@ -1,0 +1,19 @@
+{
+  "name": "todos-list-angular",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Quoc-99/angular-todos.git"
+  },
+  "author": "Quoc",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Quoc-99/angular-todos/issues"
+  },
+  "homepage": "https://github.com/Quoc-99/angular-todos#readme"
+}
