@@ -22,7 +22,6 @@ export class TodosService {
   }
 
   toggleAll(isCompleted: boolean): void {
-    console.log('isCompleted: ', isCompleted);
     const updatedTodo = this.todos$.getValue().map((todo) => {
       return {
         ...todo,
@@ -30,6 +29,45 @@ export class TodosService {
       };
     });
     this.todos$.next(updatedTodo);
-    console.log('updatedTodo: ', updatedTodo);
+  }
+
+  changeFilter(filterName: FilterEnum): void {
+    this.filter$.next(filterName);
+  }
+
+  changeTodo(id: string, text: string): void {
+    const updateTodo$ = this.todos$.getValue().map((todo) => {
+      if (todo.id === id) {
+        return {
+          ...todo,
+          text,
+        };
+      }
+      return todo;
+    });
+
+    this.todos$.next(updateTodo$);
+  }
+
+  removeTodo(id: string): void {
+    const updateTodo$ = this.todos$.getValue().filter((todo) => {
+      return todo.id !== id;
+    });
+    this.todos$.next(updateTodo$);
+  }
+
+  // Toggle checkbox todo
+  toggleTodo(id: string): void {
+    const updateTodo$ = this.todos$.getValue().map((todo) => {
+      if (todo.id === id) {
+        return {
+          ...todo,
+          isCompleted: !todo.isCompleted,
+        };
+      }
+      return todo;
+    });
+
+    this.todos$.next(updateTodo$);
   }
 }
